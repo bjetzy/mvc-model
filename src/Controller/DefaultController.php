@@ -43,6 +43,7 @@ class DefaultController
         $view = new View('default/index');
         $view->title = 'BlogIt';
         $view->heading = 'BlogIt';
+        $view->noHeader= true;
         $view->display();
     }
 
