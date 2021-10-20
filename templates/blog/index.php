@@ -15,7 +15,7 @@
     </div>
 
     <div id="blogContent">
-      <img class="blogImage"src="<?= $blogImage; ?>" alt=""> <!--/*BlogPicture*/-->
+      <img class="blogImage"src="<?= $blogPicturePath; ?>" alt=""> <!--/*BlogPicture*/-->
       <p id="blogText"><?= $blogText; ?></p><!--/*BlogText*/-->
     </div>
 

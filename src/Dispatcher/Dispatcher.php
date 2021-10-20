@@ -30,6 +30,7 @@ class Dispatcher
      */
     public static function dispatch()
     {
+        session_start();
         $controllerName = UriParser::getControllerName().'Controller';
         $className = 'App\\Controller\\'.$controllerName;
         $methodName = UriParser::getMethodName();

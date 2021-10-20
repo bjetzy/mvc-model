@@ -22,5 +22,24 @@ class BlogController
       //$view->blogs = $blogRepository->readAll();
       $view->display();
   }
+  public function create()
+  {
+    $view = new View('blog/create');
+    $view->title = 'Blog erstellen';
+    $view->heading = 'Blog erstellen';
+    $view->display();
+  }
+
+  public function doCreate()
+  {
+      if (isset($_POST['send'])) {
+        $blogTitle = $_POST['title'];
+        $blogPicturePath = $_POST['image'];
+        $blogText = $_POST['content'];
+
+        $blogRepository = new BlogRepository();
+        blogRepository->create($blogTitle, $blogText, $blogPicturePath)
+      }
+  }
 
 }
