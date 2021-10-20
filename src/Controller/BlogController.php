@@ -23,4 +23,20 @@ class BlogController
       $view->display();
   }
 
+  public function create()
+  {
+      $view = new View('blog/create');
+      $view->title = 'Blog erstellen';
+      $view->heading = 'Blog erstellen';
+      $view->display();
+  }
+
+  public function profile()
+  {
+      $view = new View('blog/profile');
+      $view->title = 'Profil';
+      $view->heading = 'Profil';
+      $view->display();
+  }
+
 }
