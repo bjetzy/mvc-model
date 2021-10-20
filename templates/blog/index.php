@@ -21,11 +21,11 @@
 			      </div>
 			    </div>
 
+
 			    <div id="blogContent">
-			      <img class="blogImage"src="<?= $blog->blogImage; ?>" alt="Bild"> <!--/*BlogPicture*/-->
+			      <img class="blogImage"src="<?= $blog->blogPicturePath; ?>" alt="Bild"> <!--/*BlogPicture*/-->
 			      <p id="blogText"><?= $blog->blogText; ?></p><!--/*BlogText*/-->
 			    </div>
-
 			  </div>
 			</div>
 		<?php endforeach; ?>

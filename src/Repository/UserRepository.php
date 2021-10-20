@@ -31,19 +31,37 @@ class UserRepository extends Repository
      *
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      */
-    public function create($firstName, $lastName, $email, $password)
+    public function create($username, $password, $profilePicturePath)
     {
         $password = sha1($password);
 
-        $query = "INSERT INTO $this->tableName (firstName, lastName, email, password) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO $this->user (username, password, profilePicturePath) VALUES (?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ssss', $firstName, $lastName, $email, $password);
+        $statement->bind_param('ssss', $username, $password, $profilePicturePath);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
 
         return $statement->insert_id;
+    }
+
+    public function isValidUser($username, $password)
+    {
+      $password = sha1($password);
+
+      $query = "SELECT * $this->user WHERE 'username' = ? AND 'password' = ?";
+
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+      $statement->bind_param('ss', $username, $password);
+
+      if (!$statement->execute()) {
+          throw new Exception($statement->error);
+      }
+      if (!is_null($statement)) {
+        // code...
+      }
+      return $statement->
     }
 }
