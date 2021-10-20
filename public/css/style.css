@@ -11,6 +11,7 @@ body {
 body > .container {
   /*padding: 80px 15px 0;*/
   height: 100%;
+
 }
 
 body Button {
@@ -326,4 +327,76 @@ input[type="submit"] {
     color: #697386;
     font-weight: 600;
     margin: 0 10px;
+}
+
+#blogPageContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.blogBox{
+ border-style: solid;
+ padding: 20px;
+ width: 45%;
+ height:auto;
+ border-color: black;
+ border-radius: 25px;
+}
+.wrapper{
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ grid-gap: 5px;
+ border-bottom-style: solid;
+ border-color: black;
+ border-width: 2px;
+ /* padding-bottom: 10px; */
+}
+.profilewrapper{
+  display: grid;
+  grid-template-columns: repeat(2, 65px);
+  grid-gap: 0px;
+  align-items: center;
+
+}
+
+
+.blogProfilePicture{
+  width: 50px;
+height: 50px;
+overflow: hidden;
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+-ms-border-radius: 50%;
+-o-border-radius: 50%;
+border-radius: 50%;
+
+}
+#blogUsername{
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+
+}
+#blogTitle{
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+}
+
+#blogContent{
+
+}
+
+.blogImage{
+  height: 200px;
+  width:auto;
+}
+
+.blogText{
+
 }
