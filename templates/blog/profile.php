@@ -5,6 +5,7 @@
 		</div>
 	<?php else: ?>
 		<?php foreach ($blogs as $blog): ?>
+      <?php if ($blog->User_Id == 0): ?>
 			<div id="blogPageContent">
 			  <div class="blogBox">
 			    <div class="wrapper">
@@ -21,13 +22,15 @@
 			      </div>
 			    </div>
 
-
 			    <div id="blogContent">
-			      <img class="blogImage"src="<?= $blog->blogPicturePath; ?>" alt="Bild"> <!--/*BlogPicture*/-->
+			      <img class="blogImage"src="<?= $blog->blogImage; ?>" alt="Bild"> <!--/*BlogPicture*/-->
 			      <p id="blogText"><?= $blog->blogText; ?></p><!--/*BlogText*/-->
 			    </div>
+
 			  </div>
 			</div>
+      <?php else: ?>
+      <?php endif; ?>
 		<?php endforeach; ?>
 	<?php endif; ?>
 </article>

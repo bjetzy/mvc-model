@@ -1,18 +1,32 @@
 <article class="hreview open special">
-	<?php if (empty($users)): ?>
+	<?php if (empty($blogs)): ?>
 		<div class="dhd">
-			<h2 class="item title">Hoopla! Keine User gefunden.</h2>
+			<h2 class="item title">Hoopla! Keine Blogs gefunden.</h2>
 		</div>
 	<?php else: ?>
-		<?php foreach ($users as $user): ?>
-			<div class="panel panel-default">
-				<div class="panel-heading"><?= $user->firstName; ?> <?= $user->lastName; ?></div>
-				<div class="panel-body">
-					<p class="description">In der Datenbank existiert ein User mit dem Namen <?= $user->firstName; ?> <?= $user->lastName; ?>. Dieser hat die EMail-Adresse: <a href="mailto:<?= $user->email; ?>"><?= $user->email; ?></a></p>
-					<p>
-						<a title="Löschen" href="/user/delete?id=<?= $user->id; ?>">Löschen</a>
-					</p>
-				</div>
+		<?php foreach ($blogs as $blog): ?>
+			<div id="blogPageContent">
+			  <div class="blogBox">
+			    <div class="wrapper">
+			      <div class="profilewrapper">
+			        <div >
+			        <img class="blogProfilePicture"src="<?= $blog->blogProfilePicture; ?>" alt="Profilbild">
+			        </div> <!--/*UserPicture*/-->
+			        <div>
+			       <p id="blogUsername"><?= $blog->blogUsername; ?></p><!--Username*/-->
+			     </div>
+			      </div>
+			      <div>
+			        <p id="blogTitle"><?= $blog->blogTitle; ?></p><!--/*title*/-->
+			      </div>
+			    </div>
+
+			    <div id="blogContent">
+			      <img class="blogImage"src="<?= $blog->blogImage; ?>" alt="Bild"> <!--/*BlogPicture*/-->
+			      <p id="blogText"><?= $blog->blogText; ?></p><!--/*BlogText*/-->
+			    </div>
+
+			  </div>
 			</div>
 		<?php endforeach; ?>
 	<?php endif; ?>
