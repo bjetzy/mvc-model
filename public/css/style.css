@@ -58,6 +58,10 @@ Button a:hover{
   height: 35px;
 }
 
+.centered{
+  text-align: center;
+}
+
 /*  */
 /* header */
 /*  */

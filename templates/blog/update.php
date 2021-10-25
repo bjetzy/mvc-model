@@ -1,3 +1,5 @@
+<div class="whitespace">
+</div>
 <div class="startPagesContent">
 <form action="/blog/doUpdate" method="update">
 <div class="field padding-bottom--24">
@@ -16,4 +18,6 @@
 <input type="submit" name="send"></input>
 </div>
 </form>
+</div>
+<div class="whitespace">
 </div>

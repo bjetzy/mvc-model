@@ -73,8 +73,7 @@ class BlogController
 
 }
 else {
-  echo "fehler";
-  print_r($_POST);
+  echo "fehler";;
 }
 }
 
@@ -104,6 +103,18 @@ else {
       }
 
 
+  }
+  public function update(){
+    $view = new View('blog/update');
+    $view->title = 'Blog updaten';
+    $view->heading = 'Blog updaten';
+    $view->display();
+  }
+
+  public function logout(){
+    unset($_SESSION['id']);
+    session_destroy();
+    header('Location: /');
   }
 
 }

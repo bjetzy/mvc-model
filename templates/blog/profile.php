@@ -2,9 +2,12 @@
 	<div id="profileAlign">
 		<img class="profilePicture" src="/images/pb.jpg" alt="Profilbild">
 	</div>
+	<a href="/blog/logout" class="centered"><p>Abmelden</p></a>
 	<div id="profileUsername">
 		<p> Benutzername: <?= $user->username; ?></p>
 	</div>
+
+		<p class="centered"> Ihre Posts:</p>
 </div>
 	<?php if (empty($blogs)): ?>
 		<div class="dhd">
