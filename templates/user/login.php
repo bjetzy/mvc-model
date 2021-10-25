@@ -8,7 +8,7 @@
 				<div class="formbg">
 					<div class="formbg-inner padding-horizontal--48">
 						<span class="padding-bottom--30">Jetzt Einloggen</span>
-						<form id="stripe-login">
+						<form id="stripe-login" action="/user/checkLogin" method="post">
 							<div class="field padding-bottom--24">
 								<label for="username">Benutzername</label>
 								<input type="text" name="username">
@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div class="footer-link padding-top--24">
-					<span>Don't have an account? <a href="">Sign up</a></span>
+					<span>Noch kein Account? <a href="">Registrieren</a></span>
 					<div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
 						<span><a href="#">© BlogIt</a></span>
 						<span><a href="#">Privacy & terms</a></span>

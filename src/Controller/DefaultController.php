@@ -44,6 +44,7 @@ class DefaultController
         $view->title = 'BlogIt';
         $view->heading = 'BlogIt';
         $view->noHeader= true;
+        $view->noFooter = true;
         $view->display();
     }
 

@@ -23,13 +23,16 @@
               <img id="headerLogo" src="/images/BlogIt_Logo.svg" alt="Logo" >
           </a>
             <ul class="nav__wrapper">
-              <li ><a href="create">
+              <li>
+                <a href="/blog/create">
                 <img class="headerIcons" src="/images/addIcon.png" alt="+">
-              </a></li>
-              <li >
-                <a href="#Profile">
+              </a>
+            </li>
+              <li>
+                <a href="/blog/profile">
                   <img class="headerIcons" src="/images/pb.jpg" alt="pb"/>
-              </a></li>
+              </a>
+            </li>
             </ul>
           </nav>
       <?php endif; ?>

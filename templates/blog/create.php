@@ -1,5 +1,7 @@
+<div class="whitespace">
+</div>
 <div class="startPagesContent">
-  <form action="/user/doCreate" method="post">
+  <form enctype="multipart/form-data" action="/blog/doCreate" method="post">
     <div class="field padding-bottom--24">
       <label for="title">*Titel</label>
       <input  name="title" type="text" class="form-control" required>
@@ -13,7 +15,9 @@
       <input name="image" type="file" accept="image/*" class="form-control" required>
     </div>
     <div class="field">
-      <input type="submit" name="send"></input>
+      <input type="submit" name="send" value="Blog It" />
     </div>
   </form>
+</div>
+<div class="whitespace">
 </div>
