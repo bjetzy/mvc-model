@@ -1,20 +1,26 @@
 <article class="hreview open special">
+	<div id="profileAlign">
+		<img class="profilePicture" src="/images/pb.jpg" alt="Profilbild">
+	</div>
+	<div id="profileUsername">
+		<p> Benutzername: <?= $user->username; ?></p>
+	</div>
+</div>
 	<?php if (empty($blogs)): ?>
 		<div class="dhd">
 			<h2 class="item title">Hoopla! Keine Blogs gefunden.</h2>
 		</div>
 	<?php else: ?>
-		<?php foreach ($blogs as $blog): ?>
-      <?php if ($blog->User_Id == 0): ?>
+		<?php foreach ($blogs as $blog):?>
 			<div id="blogPageContent">
 			  <div class="blogBox">
 			    <div class="wrapper">
 			      <div class="profilewrapper">
 			        <div >
-			        <img class="blogProfilePicture"src="<?= $blog->blogProfilePicture; ?>" alt="Profilbild">
+			        <img class="blogProfilePicture" src="<?= $user->profilePicturePath ?>" alt="Profilbild">
 			        </div> <!--/*UserPicture*/-->
 			        <div>
-			       <p id="blogUsername"><?= $blog->blogUsername; ?></p><!--Username*/-->
+			       <p id="blogUsername"><?= $user->username; ?></p><!--Username*/-->
 			     </div>
 			      </div>
 			      <div>
@@ -23,14 +29,13 @@
 			    </div>
 
 			    <div id="blogContent">
-			      <img class="blogImage"src="<?= $blog->blogImage; ?>" alt="Bild"> <!--/*BlogPicture*/-->
+			      <img class="blogImage"src="<?= $blog->blogPicturePath ?>" alt="Bild"> <!--/*BlogPicture*/-->
 			      <p id="blogText"><?= $blog->blogText; ?></p><!--/*BlogText*/-->
 			    </div>
-
 			  </div>
 			</div>
-      <?php else: ?>
-      <?php endif; ?>
+			<div class="whitespace">
+			</div>
 		<?php endforeach; ?>
 	<?php endif; ?>
 </article>

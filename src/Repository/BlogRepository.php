@@ -31,13 +31,13 @@ class BlogRepository extends Repository
      *
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      */
-    public function create($blogTitle, $blogText, $blogPicturePath)
+    public function create($blogTitle, $blogText, $blogPicturePath,$user_id)
     {
 
-        $query = "INSERT INTO $this->blog (blogTitle, blogText, blogPicturePath) VALUES (?, ?, ?)";
+        $query = "INSERT INTO $this->tableName (blogTitle, blogText, blogPicturePath,user_id) VALUES (?, ?, ?,?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ssss', $blogTitle, $blogText, $blogPicturePath);
+        $statement->bind_param('sssi', $blogTitle, $blogText, $blogPicturePath,$user_id);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
@@ -47,10 +47,44 @@ class BlogRepository extends Repository
     }
     public function update($blogTitle, $blogText, $blogPicturePath)
     {
-      $query = "UPDATE $this->blog SET(blogTitle, blogText, blogPicturePath) VALUES (?, ?, ?)";
+      $query = "UPDATE $this->tableName SET(blogTitle, blogText, blogPicturePath) VALUES (?, ?, ?)";
+    }
+    public function updateFilePath($id,$blogPicturePath)
+    {
+      $query = "UPDATE $this->tableName SET blogPicturePath = ? Where id = ?";
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+      $statement->bind_param('si',$blogPicturePath,$id);
+
+      if (!$statement->execute()) {
+          throw new Exception($statement->error);
+      }
+
+      return $statement->insert_id;
     }
     public function delete()
     {
 
     }
+    public function getByUsersID($id){
+      $query = "SELECT * FROM {$this->tableName} WHERE user_id = ?";
+
+      $statement = ConnectionHandler::getConnection()->prepare($query);
+      $statement->bind_param('i', $id);
+
+      $statement->execute();
+
+      $result = $statement->get_result();
+      if (!$result) {
+          throw new Exception($statement->error);
+      }
+
+      // Ersten Datensatz aus dem Reultat holen
+      $rows = array();
+      while ($row = $result->fetch_object()) {
+          $rows[] = $row;
+      }
+
+      $result->close();
+      return $rows;
+}
 }

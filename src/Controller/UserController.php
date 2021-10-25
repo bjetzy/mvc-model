@@ -32,10 +32,12 @@ class UserController
 
     public function login()
     {
+
         $view = new View('user/login');
         $view->title = 'Login';
         $view->heading = 'Login';
         $view->noHeader = true;
+        $view->noFooter = true;
         $view->display();
     }
 
@@ -46,7 +48,6 @@ class UserController
             $lastName = $_POST['lname'];
             $email = $_POST['email'];
             $password = $_POST['password'];
-
             $userRepository = new UserRepository();
             $userRepository->create($firstName, $lastName, $email, $password);
         }
@@ -57,10 +58,31 @@ class UserController
 
     public function delete()
     {
-        $userRepository = new UserRepository();
-        $userRepository->deleteById($_GET['id']);
+        // $userRepository = new UserRepository();
+        // $userRepository->deleteById($_GET['id']);
 
         // Anfrage an die URI /user weiterleiten (HTTP 302)
         header('Location: /user');
+    }
+
+    public function checkLogin(){
+      if (isset($_POST['username'])
+      && !empty($_POST['username'])
+      && isset($_POST['password'])
+      && !empty($_POST['password'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $isValid = false;
+
+          $userRepository = new UserRepository();
+          if($userRepository->isValidUser($username,$password)){
+            header('Location: /blog');
+          }
+          else {
+            header('Location: /error');
+          }
+
+
+      }
     }
 }

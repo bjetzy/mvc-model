@@ -35,7 +35,7 @@ class UserRepository extends Repository
     {
         $password = sha1($password);
 
-        $query = "INSERT INTO $this->user (username, password, profilePicturePath) VALUES (?, ?, ?)";
+        $query = "INSERT INTO $this->tableName (username, password, profilePicturePath) VALUES (?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('ssss', $username, $password, $profilePicturePath);
@@ -47,21 +47,33 @@ class UserRepository extends Repository
         return $statement->insert_id;
     }
 
-    public function isValidUser($username, $password)
-    {
+    public function isValidUser($username, $password){
       $password = sha1($password);
-
-      $query = "SELECT * $this->user WHERE 'username' = ? AND 'password' = ?";
+      echo
+      $query = "SELECT * FROM {$this->tableName} WHERE username =? AND password =?";
 
       $statement = ConnectionHandler::getConnection()->prepare($query);
       $statement->bind_param('ss', $username, $password);
 
-      if (!$statement->execute()) {
+      $statement->execute();
+
+      $result = $statement->get_result();
+      if (!$result) {
           throw new Exception($statement->error);
       }
-      if (!is_null($statement)) {
-        // code...
+
+      // Ersten Datensatz aus dem Reultat holen
+      $row = $result->fetch_object();
+
+      $result->close();
+      if (!is_null($row)) {
+        $_SESSION['id'] = $row->id;
+        return true;
       }
-      return $statement->
+      else {
+        return false;
+      }
+
     }
+
 }
