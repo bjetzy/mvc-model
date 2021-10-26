@@ -74,10 +74,16 @@ class BlogController
 }
 else {
   echo "fehler";
-  print_r($_POST);
 }
 }
 
+public function impressum()
+{
+  $view = new View('blog/impressum');
+  $view->title = 'BlogIt';
+  $view->heading = 'BlogIt';
+  $view->display();
+}
   public function profile()
   {
       $userRepository = new UserRepository();
